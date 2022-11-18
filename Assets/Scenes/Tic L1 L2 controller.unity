@@ -205,7 +205,7 @@ RectTransform:
   - {fileID: 1362868044}
   - {fileID: 41541120}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -700,7 +700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139354719
 GameObject:
@@ -1102,7 +1102,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &305454412
 GameObject:
@@ -1893,9 +1893,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Estas desaarrollando tu proyecto en una compu en L1, pero se apaga la luz
-    y LA UNICA MANERA de recuperar tu proyecto es volver a enceder las luces y acceder
-    con una clave especial que te va a dar Luca, buena suerte recuperando tu proyecto!!!
+  m_Text: 'Tenes que escaparte de L1/L2, porque hay '
 --- !u!222 &392680937
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15989,7 +15987,7 @@ Transform:
   - {fileID: 1867559505}
   - {fileID: 416446174}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1107075275
 Transform:
@@ -17919,7 +17917,7 @@ Transform:
   m_LocalScale: {x: 0.24892, y: 0.24892, z: 0.24892}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1168738214
 MonoBehaviour:
@@ -18513,7 +18511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1362868044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19219,7 +19217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1475336054
 GameObject:
@@ -19402,7 +19400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541210865
 GameObject:
@@ -20564,6 +20562,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712758021}
   m_Mesh: {fileID: 4300038, guid: eda073de62a6d1243873507b1bffeaac, type: 3}
+--- !u!1001 &1716951121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_Name
+      value: modelado_Pesonaje_fem (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.782
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.341
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400084, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bf5887c1b6baaee458c499e4693bc400, type: 2}
+    - target: {fileID: 9500000, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03147d384c44df34aacfb839ad9b937e, type: 3}
 --- !u!1 &1723890132
 GameObject:
   m_ObjectHideFlags: 0
@@ -21340,7 +21407,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1827985932
 GameObject:
@@ -23329,7 +23396,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 8.273001, y: 22.959002, z: 0}
 --- !u!114 &2112619839
 MonoBehaviour:
