@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18021,6 +18021,7 @@ MonoBehaviour:
   lightsManager: {fileID: 1460351333}
   TalkedToLuca: 0
   instructions: {fileID: 1444119197}
+  dialogsSO: {fileID: 11400000, guid: 5382cba053fe4e04abc37e2c3769c88f, type: 2}
   TalkedToLucaBefore: 0
   cont: 0
 --- !u!1 &1216400346
