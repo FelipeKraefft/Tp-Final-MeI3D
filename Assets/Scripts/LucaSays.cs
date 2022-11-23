@@ -1,8 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class LucaSays : MonoBehaviour
 {
@@ -10,18 +9,15 @@ public class LucaSays : MonoBehaviour
     public Text Luca;
     public LightsManager lightsManager;
     public bool TalkedToLuca;
-    [SerializeField]bool talking;
+    bool talking;
+    public Text instructions;
     public DialogsSO dialogsSO;
     [SerializeField] bool TalkedToLucaBefore;
     [SerializeField] int cont;
-    public Animator camAnim;
-
-    Rigidbody rb;
-    UIManager uiManager;
-    public GameObject player, CamToMemo;
+    
 
     string[] dialogs = { 
-    "Hola, soy Luca antes de nada podiras prender las luces de L1, que no se que paso que se apagaron todas las luces y no veo nada", 
+    "Hola, soy ... antes de nada podiras prender las luces de L1, que no se que paso que se apagaron todas las luces y no veo nada", 
     "Ya te dije que vayas a prender las luces primero",
     "Muy bien, ya que prendiste las luces!",
     "Perfecto, te recomiendo que te vayas lo antes posible, estan pasando cosas raras por aca", 
@@ -39,14 +35,18 @@ public class LucaSays : MonoBehaviour
         talking = false;
 
         dialogsSO.SetDialog(dialogs);
-        uiManager = UIManager.GetComponent<UIManager>();
-        rb = GameObject.Find("Player").GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (TalkedToLuca){
+            instructions.gameObject.SetActive(true);
+        }
 
+        if (!TalkedToLuca){
+            instructions.gameObject.SetActive(false);
+        } 
     }
 
     void OnTriggerEnter(Collider col){
@@ -86,59 +86,19 @@ public class LucaSays : MonoBehaviour
     }
 
     void OnTriggerStay(Collider col){
-        if (col.gameObject.tag == "Player" && !talking && Input.GetKeyDown(KeyCode.Return)){
-            DesactivarUI();
-        }
-
         if (col.gameObject.tag == "Player" && talking && Input.GetKeyDown(KeyCode.Return)){
             dialogsSO.currentDialog++;
             Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
         }
 
-        if (dialogsSO.currentDialog == 7){
+        else if (dialogsSO.currentDialog == 7){
             talking = false;
-            DesactivarUI();
-            GoToMiniGame();
-
-        }
-    }
-
-    void OnTriggerExit(Collider col){
-        if (col.gameObject.tag == "Player"){
-            DesactivarUI();
+            //Hacer animacion de entrando al juego de memotest
         }
     }
 
     void ActivarUI(){
-        uiManager.LucaSays.SetActive(true);
-    }
-
-    void DesactivarUI(){
-        Time.timeScale = 1;
-        uiManager.start.SetActive(false);
-        uiManager.LucaSays.SetActive(false);
-    }
-
-    void GoToMiniGame(){
-        //Hacer animacion de entrando al juego de memotest
-        player.SetActive(false);
-        CamToMemo.SetActive(true);
-        Invoke("GoToSceneMemotest", 2f);
-        Invoke("IntoPlayer", 2.5f);
-    }
-
-    void GoToSceneMemotest(){
-        SceneManager.LoadScene("Memotest");
-    }
-
-    void IntoPlayer(){
-        camAnim.SetBool("Entering", false);
-        Invoke("EndAnimation", 1.5f);
-        
-    }
-
-    void EndAnimation(){
-        player.SetActive(true);
-        CamToMemo.SetActive(false);
+        UIManager.GetComponent<UIManager>().LucaSays.SetActive(true);
+        Time.timeScale = 0;
     }
 }
