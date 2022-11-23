@@ -16,5 +16,6 @@ public class LookAtPlayer : MonoBehaviour
     void Update()
     {
         transform.LookAt(target.transform);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 }
