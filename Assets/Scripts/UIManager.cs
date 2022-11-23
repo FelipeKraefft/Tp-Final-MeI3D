@@ -19,10 +19,12 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && start.activeSelf)
+        if(Input.GetKeyDown(KeyCode.Return))
         {
-            start.SetActive(false);
             Time.timeScale = 1;
+            start.SetActive(false);
+            LucaSays.SetActive(false);
         }
     }
+    
 }
