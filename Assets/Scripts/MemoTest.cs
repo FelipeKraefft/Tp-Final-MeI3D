@@ -15,10 +15,11 @@ public class MemoTest : MonoBehaviour
     int cont;
     bool canCheck;
     bool canPress;
-    [SerializeField] bool allCorrect;
+    public static bool allCorrect;
     Texture firstTexture, secondTexture;
     GameObject firstTag, secondTag;
     GameObject firstCorrectPiece, secondCorrectPiece;
+    public DataSO data;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class MemoTest : MonoBehaviour
         allCorrect = CheckWin();
         if(allCorrect)
         {
+            data.isFirstTime = false;
             Invoke("WinGame", 1f);
         }
     }

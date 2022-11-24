@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Data", menuName = "Data")]
-public class Data : ScriptableObject
+public class DataSO : ScriptableObject
 {
-    public bool isFirstTime;
+    public bool isFirstTime = true;
+    public bool isScene1 = true; 
+    public bool hasKey = false;
 }

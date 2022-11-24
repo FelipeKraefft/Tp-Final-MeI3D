@@ -6,7 +6,7 @@ public class CamToMonitorAnimationManager : MonoBehaviour
 {
     public GameObject cam;
     Animator anim;
-    public Data data;
+    public DataSO data;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +17,13 @@ public class CamToMonitorAnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (data.isFirstTime){
-            anim.SetBool("Entering", true);
+        if (cam.active && data.isFirstTime)
+        {
+            anim.SetBool("isFirstTime", true);
         }
-        else{
-            anim.SetBool("Entering", false);
+        else if (cam.active)
+        {
+            anim.SetBool("isFirstTime", false);
         }
     }
 }

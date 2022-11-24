@@ -11,20 +11,24 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Time.timeScale = 4;
         memoTest = GameObject.Find("MemoTest");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > 64){
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
+        if (Time.timeSinceLevelLoad > 64){
             timerText.text = "Time's Up!";
             memoTest.SetActive(false);
             perdiste.SetActive(true);
         }
 
-        else if (Time.time > 4){
+        else if (Time.timeSinceLevelLoad > 4){
             timerText.text = TimerCountdown();
         }
         
@@ -35,7 +39,7 @@ public class Timer : MonoBehaviour
     public string TimerCountdown()
     {
         float timeLeft = 64f;
-        timeLeft -= Time.time;
+        timeLeft -= Time.timeSinceLevelLoad;
         string minutes = ((int)timeLeft / 60).ToString();
         string seconds = ((Mathf.Floor(timeLeft % 60)).ToString());
 
@@ -55,6 +59,11 @@ public class Timer : MonoBehaviour
     {
         int i = int.Parse(s);
         return i;
+    }
+
+    void fixTimer()
+    {
+        Time.timeScale = 1;
     }
     
 }

@@ -9,7 +9,7 @@ public class LightsManager : MonoBehaviour
     public GameObject[] LuzMonitores;
     public Canvas canvas;
     public Text instrucciones;
-    public Data data;
+    public DataSO data;
 
     public bool lucesEncendidas;
 

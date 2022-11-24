@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject start;
     public GameObject LucaSays;
     bool isStart = true;
-    public Data data;
+    public DataSO data;
 
     // Start is called before the first frame update
     void Start()

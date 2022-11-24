@@ -12,11 +12,11 @@ public class LucaSays : MonoBehaviour
     public bool TalkedToLuca;
     bool talking;
     public DialogsSO dialogsSO;
-    GameObject player; 
     public GameObject camToTable;
     bool isPlayerPlaying;
     [SerializeField] bool TalkedToLucaBefore;
     [SerializeField] int cont;
+    public DataSO data;
     
 
     string[] dialogs = { 
@@ -38,7 +38,6 @@ public class LucaSays : MonoBehaviour
         TalkedToLuca = false;
         cont = 0;
         talking = false;
-        player = GameObject.Find("Player");
 
         dialogsSO.SetDialog(dialogs);
         isPlayerPlaying = false;
@@ -51,50 +50,55 @@ public class LucaSays : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider col){
-        if(col.gameObject.tag == "Player" && !lightsManager.lucesEncendidas && !TalkedToLucaBefore){
+        if (data.isFirstTime){
+            if(col.gameObject.tag == "Player" && !lightsManager.lucesEncendidas && !TalkedToLucaBefore){
             ActivarUI();
             Luca.text = dialogsSO.dialogs[0];
             dialogsSO.currentDialog++;
             TalkedToLucaBefore = true;
             cont++;
-        }
+            }
 
-        else if (col.gameObject.tag == "Player" && !lightsManager.lucesEncendidas && TalkedToLucaBefore){
-            ActivarUI();
-            TalkedToLucaBefore = true;
-            Luca.text = dialogsSO.dialogs[1];
-            cont++;
-        }
+            else if (col.gameObject.tag == "Player" && !lightsManager.lucesEncendidas && TalkedToLucaBefore){
+                ActivarUI();
+                TalkedToLucaBefore = true;
+                Luca.text = dialogsSO.dialogs[1];
+                cont++;
+            }
 
-        else if(col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont == 0 && !TalkedToLucaBefore){
-            ActivarUI();
-            TalkedToLuca = true;
-            Luca.text = dialogsSO.dialogs[2];
-            dialogsSO.currentDialog = 2;
-            talking = true;           
-            TalkedToLucaBefore = true;
-            cont++;
-        }
+            else if(col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont == 0 && !TalkedToLucaBefore){
+                ActivarUI();
+                TalkedToLuca = true;
+                Luca.text = dialogsSO.dialogs[2];
+                dialogsSO.currentDialog = 2;
+                talking = true;           
+                TalkedToLucaBefore = true;
+                cont++;
+            }
 
-        else if (col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont > 0 && TalkedToLucaBefore && !isPlayerPlaying){
-            ActivarUI();
-            TalkedToLuca = true;
-            Luca.text = dialogsSO.dialogs[3];
-            dialogsSO.currentDialog = 3;
-            talking = true;
-            cont++;
+            else if (col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont > 0 && TalkedToLucaBefore && !isPlayerPlaying){
+                ActivarUI();
+                TalkedToLuca = true;
+                Luca.text = dialogsSO.dialogs[3];
+                dialogsSO.currentDialog = 3;
+                talking = true;
+                cont++;
+            }
         }
+        
 
-        else{
+        if(!data.isFirstTime && col.gameObject.tag == "Player"){
             ActivarUI();
+            Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
+            dialogsSO.currentDialog++;
+            data.hasKey = true;
         }
     }
 
 
     void OnTriggerStay(Collider col){
-        if (dialogsSO.currentDialog == 7){
+        if (dialogsSO.currentDialog == 7 && data.isFirstTime){
             talking = false;
-            player.SetActive(false);
             camToTable.SetActive(true);
             isPlayerPlaying = true;
             DesactivarUI();
