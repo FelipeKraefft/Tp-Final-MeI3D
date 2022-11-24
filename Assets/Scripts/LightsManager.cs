@@ -9,6 +9,7 @@ public class LightsManager : MonoBehaviour
     public GameObject[] LuzMonitores;
     public Canvas canvas;
     public Text instrucciones;
+    public Data data;
 
     public bool lucesEncendidas;
 
@@ -21,7 +22,7 @@ public class LightsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > 2 && Time.time < 3){
+        if(Time.time > 2 && Time.time < 3 && data.isFirstTime){
             Lights.SetActive(false);
             foreach(GameObject monitor in LuzMonitores){
                 monitor.SetActive(false);

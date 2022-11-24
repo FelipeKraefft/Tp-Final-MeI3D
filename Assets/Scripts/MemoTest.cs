@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MemoTest : MonoBehaviour
 {
-    public GameObject question;
-    public GameObject memoT;
-    public GameObject win;
     public Texture[] tag;
     RawImage img;
     [SerializeField] bool firstClick;
@@ -30,14 +28,10 @@ public class MemoTest : MonoBehaviour
         randoms = randomArray0to8();
         canPress = true;
 
-        question.SetActive(true);
-        memoT.SetActive(false);
-        win.SetActive(false);
-
         for (int i = 0; i < 18; i++)
         {
-            img = pieces[i].GetComponent<RawImage>();
-            img.texture = tag[randoms[i]];
+            //img = pieces[i].GetComponent<RawImage>();
+            pieces[i].GetComponent<RawImage>().texture = tag[randoms[i]];
         }
 
     }
@@ -52,18 +46,9 @@ public class MemoTest : MonoBehaviour
         }
     }
 
-
-
-    public void Accept()
-    {
-        question.SetActive(false);
-        memoT.SetActive(true);
-    }
-
     public void WinGame()
     {
-        memoT.SetActive(false);
-        win.SetActive(true);
+        SceneManager.LoadScene(0);
     }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LucaSays : MonoBehaviour
 {
@@ -10,20 +11,24 @@ public class LucaSays : MonoBehaviour
     public LightsManager lightsManager;
     public bool TalkedToLuca;
     bool talking;
-    public Text instructions;
     public DialogsSO dialogsSO;
+    GameObject player; 
+    public GameObject camToTable;
+    bool isPlayerPlaying;
     [SerializeField] bool TalkedToLucaBefore;
     [SerializeField] int cont;
     
 
     string[] dialogs = { 
-    "Hola, soy ... antes de nada podiras prender las luces de L1, que no se que paso que se apagaron todas las luces y no veo nada", 
+    "Hola, soy Luca! antes de nada podiras prender las luces de L1, que no se que paso que se apagaron todas las luces y no veo nada", 
     "Ya te dije que vayas a prender las luces primero",
     "Muy bien, ya que prendiste las luces!",
     "Perfecto, te recomiendo que te vayas lo antes posible, estan pasando cosas raras por aca", 
     "Para que te puedas ir necesitas la llave de la puerta de L1, para eso tenes que jugar conmigo ya que hace rato que me aburro mucho",
     "Queres jugar? Si o No?",
     "Perfecto, En esta mesa vas a encontrar un juego de memotest, tenes 2 minutos para encontrar todas las parejas, Suerte!",
+    "Muy bien, ya encontraste todas las parejas, ahora tenes que ir a la puerta de L1 y usar la llave que te di",
+    "Ya sabes que tenes que ir a la puerta de L1 y usar la llave que te di",
     };   
 
     // Start is called before the first frame update
@@ -33,20 +38,16 @@ public class LucaSays : MonoBehaviour
         TalkedToLuca = false;
         cont = 0;
         talking = false;
+        player = GameObject.Find("Player");
 
         dialogsSO.SetDialog(dialogs);
+        isPlayerPlaying = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TalkedToLuca){
-            instructions.gameObject.SetActive(true);
-        }
 
-        if (!TalkedToLuca){
-            instructions.gameObject.SetActive(false);
-        } 
     }
 
     void OnTriggerEnter(Collider col){
@@ -75,7 +76,7 @@ public class LucaSays : MonoBehaviour
             cont++;
         }
 
-        else if (col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont > 0 && TalkedToLucaBefore){
+        else if (col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont > 0 && TalkedToLucaBefore && !isPlayerPlaying){
             ActivarUI();
             TalkedToLuca = true;
             Luca.text = dialogsSO.dialogs[3];
@@ -83,22 +84,50 @@ public class LucaSays : MonoBehaviour
             talking = true;
             cont++;
         }
+
+        else{
+            ActivarUI();
+        }
     }
 
+
     void OnTriggerStay(Collider col){
-        if (col.gameObject.tag == "Player" && talking && Input.GetKeyDown(KeyCode.Return)){
+        if (dialogsSO.currentDialog == 7){
+            talking = false;
+            player.SetActive(false);
+            camToTable.SetActive(true);
+            isPlayerPlaying = true;
+            DesactivarUI();
+            Invoke("ChangeToSceneMemoTest", 1.6f);
+        }
+        
+        else if (col.gameObject.tag == "Player" && talking && Input.GetKeyDown(KeyCode.Return)){
             dialogsSO.currentDialog++;
             Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
         }
 
-        else if (dialogsSO.currentDialog == 7){
-            talking = false;
-            //Hacer animacion de entrando al juego de memotest
+        if (!talking && Input.GetKeyDown(KeyCode.Return) && col.gameObject.tag == "Player"){
+            DesactivarUI();
+        }
+    }
+
+
+    void OnTriggerExit(Collider col){
+        if (col.gameObject.tag == "Player"){
+            DesactivarUI();
+            TalkedToLuca = true;
         }
     }
 
     void ActivarUI(){
         UIManager.GetComponent<UIManager>().LucaSays.SetActive(true);
-        Time.timeScale = 0;
+    }
+
+    void DesactivarUI(){
+        UIManager.GetComponent<UIManager>().LucaSays.SetActive(false);
+    }
+
+    void ChangeToSceneMemoTest(){
+        SceneManager.LoadScene("MemoTest");
     }
 }

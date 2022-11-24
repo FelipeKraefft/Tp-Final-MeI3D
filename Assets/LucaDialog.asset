@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LucaDialog
   m_EditorClassIdentifier: Assembly-CSharp::DialogsSO
   dialogs:
-  - Hola, soy ... antes de nada podiras prender las luces de L1, que no se que paso
+  - Hola, soy Luca! antes de nada podiras prender las luces de L1, que no se que paso
     que se apagaron todas las luces y no veo nada
   - Ya te dije que vayas a prender las luces primero
   - Muy bien, ya que prendiste las luces!
@@ -24,4 +24,7 @@ MonoBehaviour:
   - Queres jugar? Si o No?
   - Perfecto, En esta mesa vas a encontrar un juego de memotest, tenes 2 minutos para
     encontrar todas las parejas, Suerte!
-  currentDialog: 0
+  - Muy bien, ya encontraste todas las parejas, ahora tenes que ir a la puerta de
+    L1 y usar la llave que te di
+  - Ya sabes que tenes que ir a la puerta de L1 y usar la llave que te di
+  currentDialog: 7
