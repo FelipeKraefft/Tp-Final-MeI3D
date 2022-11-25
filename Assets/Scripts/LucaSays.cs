@@ -23,10 +23,11 @@ public class LucaSays : MonoBehaviour
     "Hola, soy Luca! antes de nada podiras prender las luces de L1, que no se que paso que se apagaron todas las luces y no veo nada", 
     "Ya te dije que vayas a prender las luces primero",
     "Muy bien, ya que prendiste las luces!",
+
     "Perfecto, te recomiendo que te vayas lo antes posible, estan pasando cosas raras por aca", 
     "Para que te puedas ir necesitas la llave de la puerta de L1, para eso tenes que jugar conmigo ya que hace rato que me aburro mucho",
     "Queres jugar? Si o No?",
-    "Perfecto, En esta mesa vas a encontrar un juego de memotest, tenes 2 minutos para encontrar todas las parejas, Suerte!",
+    "Perfecto, En esta mesa vas a encontrar un juego de memotest, tenes 1 minuto para encontrar todas las parejas, Suerte!",
     "Muy bien, ya encontraste todas las parejas, ahora tenes que ir a la puerta de L1 y usar la llave que te di",
     "Ya sabes que tenes que ir a la puerta de L1 y usar la llave que te di",
     };   
@@ -108,8 +109,12 @@ public class LucaSays : MonoBehaviour
             DesactivarUI();
             Invoke("ChangeToSceneMemoTest", 1.6f);
         }
+
+        else if (col.gameObject.tag == "Player" && talking && Luca.text == dialogsSO.dialogs[3] && data.isFirstTime){
+            dialogsSO.currentDialog = 3;
+        }
         
-        else if (col.gameObject.tag == "Player" && talking && Input.GetKeyDown(KeyCode.Return)){
+        if (col.gameObject.tag == "Player" && talking && Input.GetKeyDown(KeyCode.Return)){
             dialogsSO.currentDialog++;
             Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
         }

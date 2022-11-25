@@ -9,6 +9,7 @@ public class GhostTrigger : MonoBehaviour
     public GameObject animationCamera;
     public DataSO data;
     GameObject player;
+    public GameObject lucaWarning;
     public bool hasPlayed = false;
 
     // Start is called before the first frame update
@@ -28,9 +29,15 @@ public class GhostTrigger : MonoBehaviour
             animationCamera.SetActive(true);
             ghost.SetActive(true);
             Invoke("DeactivateCamera", 2.7f);
-            
+            Invoke("ActivateLucaWarning", 2.7f);
             Invoke("ghostCanMove", 2.7f);
+            Invoke("IncreaseSpeed", 7.7f);
             hasPlayed = true;
+        }
+
+        else if(col.gameObject.tag == "Player" && !data.hasKey && data.isFirstTime){
+            ghost.SetActive(true);
+            Invoke("DeactivateGhost", .2f);
         }
     }
 
@@ -41,4 +48,17 @@ public class GhostTrigger : MonoBehaviour
     void ghostCanMove(){
         ghost.GetComponent<NavMeshAgent>().enabled = true;
     }
+
+    void ActivateLucaWarning(){
+        lucaWarning.SetActive(true);
+    }
+
+    void IncreaseSpeed(){
+        ghost.GetComponent<NavMeshAgent>().speed = 2.5f;
+    }
+
+    void DeactivateGhost(){
+        ghost.SetActive(false);
+    }
+
 }

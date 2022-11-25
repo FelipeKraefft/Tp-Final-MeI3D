@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFirstTime: 1
   isScene1: 1
-  hasKey: 1
+  hasKey: 0

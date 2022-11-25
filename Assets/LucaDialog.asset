@@ -22,9 +22,9 @@ MonoBehaviour:
   - Para que te puedas ir necesitas la llave de la puerta de L1, para eso tenes que
     jugar conmigo ya que hace rato que me aburro mucho
   - Queres jugar? Si o No?
-  - Perfecto, En esta mesa vas a encontrar un juego de memotest, tenes 2 minutos para
+  - Perfecto, En esta mesa vas a encontrar un juego de memotest, tenes 1 minuto para
     encontrar todas las parejas, Suerte!
   - Muy bien, ya encontraste todas las parejas, ahora tenes que ir a la puerta de
     L1 y usar la llave que te di
   - Ya sabes que tenes que ir a la puerta de L1 y usar la llave que te di
-  currentDialog: 7
+  currentDialog: 0

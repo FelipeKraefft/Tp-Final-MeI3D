@@ -9,7 +9,9 @@ public class Ghost : MonoBehaviour
     public NavMeshAgent agent;
     public Transform target;
     public GameObject susto;
+    public GameObject lucaWarning;
     public DataSO data;
+    Animator anim;
     GameObject ghostTrigger;
     GameObject ghost;
 
@@ -18,6 +20,7 @@ public class Ghost : MonoBehaviour
     {
         ghostTrigger = GameObject.Find("[GhostTrigger]");
         ghost = GameObject.Find("Ghost");
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,11 +33,15 @@ public class Ghost : MonoBehaviour
         }
 
         if(!ghostTrigger.GetComponent<GhostTrigger>().hasPlayed){
-            ghost.SetActive(false);
+            //ghost.SetActive(false);
         }
 
         else if(ghostTrigger.GetComponent<GhostTrigger>().hasPlayed){
             ghost.SetActive(true);
+        }
+
+        if(ghost.GetComponent<NavMeshAgent>().enabled){
+            anim.SetBool("isWalking", true);
         }
 
     }
@@ -42,7 +49,7 @@ public class Ghost : MonoBehaviour
     void OnTriggerEnter(Collider col){
         if(col.gameObject.tag == "Player"){
             susto.SetActive(true);
-
+            lucaWarning.SetActive(false);
         }
     }
 
@@ -50,4 +57,6 @@ public class Ghost : MonoBehaviour
     public Transform GetPlayer(){
         return GameObject.FindGameObjectWithTag("Player").transform;
     }
+
+    
 }
