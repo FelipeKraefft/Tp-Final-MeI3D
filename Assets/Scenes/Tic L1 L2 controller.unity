@@ -13874,6 +13874,7 @@ GameObject:
   - component: {fileID: 1107075265}
   - component: {fileID: 1103683745}
   - component: {fileID: 1104782049}
+  - component: {fileID: 1106984098}
   m_Layer: 0
   m_Name: HojaPuertaPasillo.001
   m_TagString: Untagged
@@ -13881,6 +13882,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1106984098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106984097}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3677572, y: 1.9239025, z: 0.05000037}
+  m_Center: {x: 1.9439654, y: -0.07869506, z: 0.18432993}
 --- !u!1 &1106984099
 GameObject:
   m_ObjectHideFlags: 0
@@ -15730,6 +15744,7 @@ GameObject:
   - component: {fileID: 1107075401}
   - component: {fileID: 1103683887}
   - component: {fileID: 1104782191}
+  - component: {fileID: 1106984238}
   m_Layer: 0
   m_Name: PuertaPasillo.001
   m_TagString: Untagged
@@ -15804,6 +15819,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1106984238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106984233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0500001, y: 1.9213438, z: 0.05000038}
+  m_Center: {x: 0.52500004, y: 0.9606718, z: -0.024999907}
 --- !u!1 &1106984239
 GameObject:
   m_ObjectHideFlags: 0
