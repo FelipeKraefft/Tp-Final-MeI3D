@@ -9,7 +9,7 @@ public class GhostTrigger : MonoBehaviour
     public GameObject animationCamera;
     public DataSO data;
     GameObject player;
-    bool hasPlayed = false;
+    public bool hasPlayed = false;
 
     // Start is called before the first frame update
     void Start()

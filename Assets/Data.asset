@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65b53fc98c5f2048a7a0aab87c816b5, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  isFirstTime: 0
+  isFirstTime: 1
   isScene1: 1
+  hasKey: 1

@@ -87,16 +87,20 @@ public class LucaSays : MonoBehaviour
         }
         
 
-        if(!data.isFirstTime && col.gameObject.tag == "Player"){
+        if(!data.isFirstTime && col.gameObject.tag == "Player" && Luca.text == dialogsSO.dialogs[7]){
             ActivarUI();
-            Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
-            dialogsSO.currentDialog++;
+            dialogsSO.currentDialog = 8;
             data.hasKey = true;
+        }
+        else if (!data.isFirstTime && col.gameObject.tag == "Player" && dialogsSO.currentDialog == 8){
+            ActivarUI();
+            Luca.text = dialogsSO.dialogs[8];
         }
     }
 
 
     void OnTriggerStay(Collider col){
+        ActivarUI();
         if (dialogsSO.currentDialog == 7 && data.isFirstTime){
             talking = false;
             camToTable.SetActive(true);
@@ -110,6 +114,11 @@ public class LucaSays : MonoBehaviour
             Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
         }
 
+        else if (!data.isFirstTime){
+            data.hasKey = true;
+            Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
+        }
+
         if (!talking && Input.GetKeyDown(KeyCode.Return) && col.gameObject.tag == "Player"){
             DesactivarUI();
         }
@@ -117,6 +126,7 @@ public class LucaSays : MonoBehaviour
 
 
     void OnTriggerExit(Collider col){
+        DesactivarUI();
         if (col.gameObject.tag == "Player"){
             DesactivarUI();
             TalkedToLuca = true;

@@ -44,6 +44,7 @@ public class MemoTest : MonoBehaviour
         if(allCorrect)
         {
             data.isFirstTime = false;
+            data.hasKey = true;
             Invoke("WinGame", 1f);
         }
     }
