@@ -12,6 +12,7 @@ public class LucaSays : MonoBehaviour
     public bool TalkedToLuca;
     bool talking;
     public DialogsSO dialogsSO;
+    public GameObject indicaciones;
     public GameObject camToTable;
     bool isPlayerPlaying;
     [SerializeField] bool TalkedToLucaBefore;
@@ -20,14 +21,15 @@ public class LucaSays : MonoBehaviour
     
 
     string[] dialogs = { 
-    "Hola, soy Luca! antes de nada podiras prender las luces de L1, que no se que paso que se apagaron todas las luces y no veo nada", 
+    "Hola, soy Luca! antes de nada podrias prender las luces de L1, que no se que paso que se apagaron todas las luces y no veo nada", 
     "Ya te dije que vayas a prender las luces primero",
     "Muy bien, ya que prendiste las luces!",
 
     "Perfecto, te recomiendo que te vayas lo antes posible, estan pasando cosas raras por aca", 
     "Para que te puedas ir necesitas la llave de la puerta de L1, para eso tenes que jugar conmigo ya que hace rato que me aburro mucho",
     "Queres jugar? Si o No?",
-    "Perfecto, En esta mesa vas a encontrar un juego de memotest, tenes 1 minuto para encontrar todas las parejas, Suerte!",
+    "En esta mesa vas a encontrar un juego de memotest, tenes 1 minuto para encontrar todas las parejas, Suerte!",
+
     "Muy bien, ya encontraste todas las parejas, ahora tenes que ir a la puerta de L1 y usar la llave que te di",
     "Ya sabes que tenes que ir a la puerta de L1 y usar la llave que te di",
     };   
@@ -51,26 +53,24 @@ public class LucaSays : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider col){
+
+        ActivarUI();
+        
         if (data.isFirstTime){
             if(col.gameObject.tag == "Player" && !lightsManager.lucesEncendidas && !TalkedToLucaBefore){
-            ActivarUI();
-            Luca.text = dialogsSO.dialogs[0];
-            dialogsSO.currentDialog++;
+            dialogsSO.currentDialog = 0;
             TalkedToLucaBefore = true;
             cont++;
             }
 
             else if (col.gameObject.tag == "Player" && !lightsManager.lucesEncendidas && TalkedToLucaBefore){
-                ActivarUI();
+                dialogsSO.currentDialog = 1;
                 TalkedToLucaBefore = true;
-                Luca.text = dialogsSO.dialogs[1];
                 cont++;
             }
 
             else if(col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont == 0 && !TalkedToLucaBefore){
-                ActivarUI();
                 TalkedToLuca = true;
-                Luca.text = dialogsSO.dialogs[2];
                 dialogsSO.currentDialog = 2;
                 talking = true;           
                 TalkedToLucaBefore = true;
@@ -78,65 +78,57 @@ public class LucaSays : MonoBehaviour
             }
 
             else if (col.gameObject.tag == "Player" && lightsManager.lucesEncendidas && cont > 0 && TalkedToLucaBefore && !isPlayerPlaying){
-                ActivarUI();
                 TalkedToLuca = true;
-                Luca.text = dialogsSO.dialogs[3];
                 dialogsSO.currentDialog = 3;
                 talking = true;
-                cont++;
             }
         }
         
 
         if(!data.isFirstTime && col.gameObject.tag == "Player" && Luca.text == dialogsSO.dialogs[7]){
-            ActivarUI();
-            dialogsSO.currentDialog = 8;
+            dialogsSO.currentDialog = 7;
             data.hasKey = true;
         }
-        else if (!data.isFirstTime && col.gameObject.tag == "Player" && dialogsSO.currentDialog == 8){
-            ActivarUI();
-            Luca.text = dialogsSO.dialogs[8];
+        else if (!data.isFirstTime && col.gameObject.tag == "Player" && Luca.text == dialogsSO.dialogs[8]){
+            dialogsSO.currentDialog = 8;
         }
+        Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
     }
 
 
     void OnTriggerStay(Collider col){
-        ActivarUI();
-        if (dialogsSO.currentDialog == 7 && data.isFirstTime){
+        if (dialogsSO.currentDialog == 7 && data.isFirstTime && Input.GetKeyDown(KeyCode.Return)){ //Check for scene change
             talking = false;
             camToTable.SetActive(true);
             isPlayerPlaying = true;
             DesactivarUI();
             Invoke("ChangeToSceneMemoTest", 1.6f);
         }
-
-        else if (col.gameObject.tag == "Player" && talking && Luca.text == dialogsSO.dialogs[3] && data.isFirstTime){
-            dialogsSO.currentDialog = 3;
-        }
         
         if (col.gameObject.tag == "Player" && talking && Input.GetKeyDown(KeyCode.Return)){
             dialogsSO.currentDialog++;
-            Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
-        }
-
-        else if (!data.isFirstTime){
-            data.hasKey = true;
-            Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
         }
 
         if (!talking && Input.GetKeyDown(KeyCode.Return) && col.gameObject.tag == "Player"){
             DesactivarUI();
         }
+
+        Luca.text = dialogsSO.dialogs[dialogsSO.currentDialog];
+
+        if (!data.isFirstTime){
+            data.hasKey = true;
+        }
+
     }
 
 
     void OnTriggerExit(Collider col){
-        DesactivarUI();
         if (col.gameObject.tag == "Player"){
             DesactivarUI();
             TalkedToLuca = true;
         }
     }
+
 
     void ActivarUI(){
         UIManager.GetComponent<UIManager>().LucaSays.SetActive(true);

@@ -35,9 +35,10 @@ public class GhostTrigger : MonoBehaviour
             hasPlayed = true;
         }
 
-        else if(col.gameObject.tag == "Player" && !data.hasKey && data.isFirstTime){
+        else if(col.gameObject.tag == "Player" && !data.hasKey && data.isFirstTime && !hasPlayed){
             ghost.SetActive(true);
             Invoke("DeactivateGhost", .2f);
+            hasPlayed = true;
         }
     }
 

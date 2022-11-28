@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LucaDialog
   m_EditorClassIdentifier: Assembly-CSharp::DialogsSO
   dialogs:
-  - Hola, soy Luca! antes de nada podiras prender las luces de L1, que no se que paso
+  - Hola, soy Luca! antes de nada podrias prender las luces de L1, que no se que paso
     que se apagaron todas las luces y no veo nada
   - Ya te dije que vayas a prender las luces primero
   - Muy bien, ya que prendiste las luces!
